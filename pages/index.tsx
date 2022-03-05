@@ -1,6 +1,5 @@
 import { Box, Button, useTheme } from "@primer/react";
 import type { NextPage } from "next";
-import { useState } from "react";
 
 const Home: NextPage = () => {
   const {
@@ -16,14 +15,16 @@ const Home: NextPage = () => {
     setNightScheme,
   } = useTheme();
 
-  const [isDefault, setIsDefault] = useState<boolean>(true);
-
   const handleSetColorMode = () => {
-    setColorMode(isDefault ? "night" : "day");
-    setNightScheme(isDefault ? "dark" : "light");
-    setDayScheme(isDefault ? "dark" : "light");
-    setIsDefault((prev) => !prev);
-    console.log(theme);
+    setColorMode(colorMode === "day" ? "night" : "day");
+  };
+
+  const handleSetNightSheme = () => {
+    setNightScheme(nightScheme === "dark" ? "light" : "dark");
+  };
+
+  const handleSetDaySheme = () => {
+    setDayScheme(dayScheme === "light" ? "dark" : "light");
   };
 
   return (
@@ -50,11 +51,21 @@ const Home: NextPage = () => {
         <Box>nightScheme: {nightScheme}</Box>
         <Box>resolvedColorMode: {resolvedColorMode}</Box>
         <Box>resolvedColorScheme: {resolvedColorScheme}</Box>
-      </Box>
-      <Box mt={2}>
-        <Button onClick={handleSetColorMode}>
-          {isDefault ? "Night" : "Day"}
-        </Button>
+        <Box>
+          <Button onClick={handleSetColorMode}>
+            ColorMode {colorMode === "day" ? "Night" : "Day"}
+          </Button>
+        </Box>
+        <Box>
+          <Button onClick={handleSetNightSheme}>
+            NightScheme {nightScheme === "dark" ? "Light" : "Dark"}
+          </Button>
+        </Box>
+        <Box>
+          <Button onClick={handleSetDaySheme}>
+            DayScheme {dayScheme === "light" ? "Dark" : "Light"}
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
