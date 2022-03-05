@@ -36,7 +36,6 @@ const Home: NextPage = () => {
       alignItems="center"
       bg="canvas.default"
       color="fg.default"
-      className="stack"
     >
       <Box
         sx={{

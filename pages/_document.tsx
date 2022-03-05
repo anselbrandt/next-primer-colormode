@@ -1,4 +1,10 @@
-import NextDocument, { DocumentContext, Head, NextScript } from "next/document";
+import NextDocument, {
+  DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class Document extends NextDocument {
@@ -29,10 +35,13 @@ class Document extends NextDocument {
   }
   render() {
     return (
-      <>
+      <Html>
         <Head />
-        <NextScript />
-      </>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
     );
   }
 }
